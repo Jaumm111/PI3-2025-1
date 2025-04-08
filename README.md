@@ -1,4 +1,5 @@
 # PI3-2025-1
-Alunos: Kenner Marqueti Couto
-        Brian
-        João
+Alunos:   
+        &nbsp;&nbsp;&nbsp;&nbsp;Kenner Marqueti Couto  
+        &nbsp;&nbsp;&nbsp;&nbsp;Brian  
+        &nbsp;&nbsp;&nbsp;&nbsp;João
