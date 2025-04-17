@@ -9,7 +9,7 @@ Alunos:
 ## Cronograma
 
 |Etapa 1|24/04|Etapa 2|15/05|Etapa 3|22/06|Etapa 4|24/07|
-|===|===| === | === | === | === | === | === |
+|---|---|---|---|---|---|---|---|
 |S1|G1|S2|G2|S3|G3|S4|G4|
 |---|---|---|---|---|---|---|---|
 | definição geral do funcionamento | Introdução do projeto | Capturar imagens no esp | Código relativo ao funcionamento da camera | Testes de acionamentos | Documentação dos testes de acionamento | Validar treinamento do processamento de imagem (finalizar treinamento do modelo) | Documentar o treinamento |
