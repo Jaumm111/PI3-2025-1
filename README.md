@@ -33,7 +33,8 @@ Com isso em mente a equipe visa o desenvolvimento de um sistema de seleção de 
 |---|---|
 |ESP32S3|1|
 |Câmera|1|
-|Servo Motor|1|
+|Motor DC|2|
+|Motor de Passo|2|
 
 ## Links úteis
 
