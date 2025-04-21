@@ -28,6 +28,12 @@ Enquanto um produto de alto custo possa oferecer velocidade, robustez e precisã
 
 Com isso em mente a equipe visa o desenvolvimento de um sistema de seleção de frutas com visão computacional de hardware mais simples e barato, expandindo a possibilidades de uso para pequenos agricultores, supermercados, etc..
 
+## Componentes
+|Módulo|Quantidade|
+|ESP32S3|1|
+|Câmera|1|
+|Servo Motor|1|
+
 ## Links úteis
 
 [USO DE VISÃO COMPUTACIONAL PARA RECONHECIMENTO DE IMAGENS DE FRUTAS EM IMAGENS RGB](https://repositorio.ufc.br/bitstream/riufc/64490/1/2022_tcc_jkopereira.pdf)
