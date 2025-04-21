@@ -30,6 +30,7 @@ Com isso em mente a equipe visa o desenvolvimento de um sistema de seleção de 
 
 ## Componentes
 |Módulo|Quantidade|
+|---|---|
 |ESP32S3|1|
 |Câmera|1|
 |Servo Motor|1|
