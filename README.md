@@ -17,6 +17,9 @@ Alunos:
 ||Levantamento e listagem do hardware || | || | || | |
 ||Diagrama de blocos com explicação || | || | || | |
 
+## Introdução
+Este projeto propõe o desenvolvimento de um robô seletor de frutas para linhas de produção, utilizando um sistema embarcado. Através do processamento de imagens, o robô identifica e classifica maçãs em diferentes tipos com base em suas características visuais.
+
 ## Justificativa
 
 Com a crescente utilização de ferramentas de visão computacional na indústria e comércio, nota-se o uso destes na seleção de mercadorias. Observando a forma com que a seleção de frutas é feita em indústria, constata-se o uso de sistemas complexos e caros.
