@@ -29,12 +29,15 @@ Enquanto um produto de alto custo possa oferecer velocidade, robustez e precisã
 Com isso em mente a equipe visa o desenvolvimento de um sistema de seleção de frutas com visão computacional de hardware mais simples e barato, expandindo a possibilidades de uso para pequenos agricultores, supermercados, etc..
 
 ## Componentes
+Para o circuito foram levantados os seguintes componentes:
 |Módulo|Quantidade|
 |---|---|
 |ESP32S3|1|
 |Câmera|1|
 |Motor DC|2|
-|Motor de Passo|2|
+|Motor de Passo|3|
+
+Os motores de passo serão utilizados no acionamento das portas de seleção das frutas, já os motores DC farão a movimentação da esteira. A câmera vai capturar a imagem da fruta e o ESP32S3 fará o processamento da imagem e mandará o sinal de controle para os motores que acionarão as portas seletoras.
 
 ## Links úteis
 
