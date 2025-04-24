@@ -18,7 +18,8 @@ Alunos:
 ||Diagrama de blocos com explicação || | || | || | |
 
 ## Introdução
-Este projeto propõe o desenvolvimento de um robô seletor de maçãs, utilizando-se de um sistema embarcado composto por microcontrolador, câmera, atuadores, e sistemas acessórios (iluminação, alimentação, sensores). Através de processamento de imagens, o robô classifica e seleciona maçãs de diferentes tipos com base em suas características visuais.
+
+Este projeto propõe o desenvolvimento de um robô seletor de maçãs, utilizando-se de um sistema embarcado composto por microcontrolador, câmera, atuadores, e sistemas acessórios (iluminação, alimentação, sensores). Através de processamento de imagens, o robô classifica e seleciona maçãs de diferentes tipos com base em suas características visuais. O objetivo deste projeto é oferecer para pequenos negócios uma alternativa de baixo custo aos equipamentos industriais com finalidade similar, tornando a tecnologia mais acessível a negócios de pequeno porte.
 
 ![imagem1](./images/3d/comeco.png)
 
