@@ -20,6 +20,8 @@ Alunos:
 ## Introdução
 Este projeto propõe o desenvolvimento de um robô seletor de maçãs, utilizando-se de um sistema embarcado composto por microcontrolador, câmera, atuadores, e sistemas acessórios (iluminação, alimentação, sensores). Através de processamento de imagens, o robô classifica e seleciona maçãs de diferentes tipos com base em suas características visuais.
 
+![imagem1](./images/3d/comeco.png)
+
 ## Justificativa
 
 Com a crescente utilização de ferramentas de visão computacional na indústria e comércio, nota-se o uso destes na seleção de mercadorias. Observando a forma com que a seleção de frutas é feita em indústria, constata-se o uso de sistemas complexos e caros.
@@ -39,6 +41,13 @@ Entretanto estes tipos de análise dependem de componentes muito mais caros que 
 Os métodos observados podem ser classificados em 3 caegorias: métodos clássicos, métodos de aprendizado de máquina não neurais, e métodos de aprendizado de máquina com redes neurais computacionais. Métodos clássicos de visão computacional como OTSU thresholding, Local Binary Patterns (LBP), e técnicas de manipulação de espaço de cor são utilizadas de forma complementar às técnicas de aprendizado de máquina ou em eplicações mais específicas, como por exemplo extração de texturas da casca das frutas. Alguns dos métodos de aprendizado de máquina recorrentes são: Support Vector Machines, Fuzzy Inference System, K-Nearest Neighbors, e Redes Neurais Convolucionais.[4][5]
 
 Destaca-se que a bibliografia consultada abrange diferentes sitemas de classificação, desde sistemas que passam a fruta por uma câmara de ambiente controlado e sensores diversos, até sistemas que avaliam a fruta ainda antes da colheita. Portanto é necessária uma profunda análise dos desempenhos e requisitos de cada algoritmo e dos requisitos específicos do projeto antes da escolha do método de classificação, visto que o custo computacional e o trabalho de desenvolvimento ou treinamento, assim como tamanho necessário da base de dados e sensibilidade a variações de ambiente ou amostras ruins na base de treinamento varia drásticamente.
+
+## Princípio de funcionamento
+
+O sistema consiste em uma esteira inclinada, responsável por transportar as frutas pelo sistema, ESP32S3 e módulo de câmera, responsáveis pela captura e processamento das imagens, bem como controle de atuadores, e por fim, portas controladas por motores de passo, que se abrem para permitir que as frutas caiam em caixas de acordo com o tipo de classificação.
+
+![imagem1](./images/3d/final.png)
+
 
 ## Componentes
 Para o circuito foram levantados os seguintes componentes:
