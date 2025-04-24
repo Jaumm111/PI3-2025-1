@@ -54,7 +54,7 @@ Para o circuito foram levantados os seguintes componentes:
 |Módulo|Quantidade|
 |---|---|
 |ESP32S3|1|
-|Câmera|1|
+|Módulo de Câmera OV2640 ou OV5640|1|
 |Motor de Passo|3|
 |Motor DC|2|
 |Esteira|1|
