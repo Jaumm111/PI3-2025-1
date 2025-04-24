@@ -58,6 +58,7 @@ Para o circuito foram levantados os seguintes componentes:
 |Motor de Passo|3|
 |Motor DC|2|
 |Esteira|1|
+|IR Module(HW-201)|3|
 
 Os motores de passo serão utilizados no acionamento das portas de seleção das frutas, já os motores DC farão a movimentação da esteira. A câmera vai capturar a imagem da fruta e o ESP32S3 fará o processamento da imagem e mandará o sinal de controle para os motores que acionarão as portas seletoras.
 
