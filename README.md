@@ -21,8 +21,6 @@ Alunos:
 
 Este projeto propõe o desenvolvimento de um robô seletor de maçãs, utilizando-se de um sistema embarcado composto por microcontrolador, câmera, atuadores, e sistemas acessórios (iluminação, alimentação, sensores). Através de processamento de imagens, o robô classifica e seleciona maçãs de diferentes tipos com base em suas características visuais. O objetivo deste projeto é oferecer a pequenos negócios uma alternativa de baixo custo aos equipamentos industriais com finalidade semelhante, tornando a tecnologia mais acessível a negócios de pequeno porte.
 
-O robô será composto por uma esteira inclinada, um sistema embarcado para aquisição de dados, processamento e acionamentos, além de portinholas controladas. Ao passar pelo sistema, a maçã é classificada de acordo com seu tipo, e a portinhola do recipiente para este respectivo tipo é acionada. Ao fim da esteira há uma abertura para onde irão objetos que não foram classificados em uma das categorias predefinidas.
-
 ![imagem1](./images/3d/comeco.png)
 
 ## Justificativa
@@ -47,7 +45,7 @@ Destaca-se que a bibliografia consultada abrange diferentes sitemas de classific
 
 ## Princípio de funcionamento
 
-O sistema consiste em uma esteira inclinada, responsável por transportar as frutas pelo sistema, ESP32S3 e módulo de câmera, responsáveis pela captura e processamento das imagens, bem como controle de atuadores, e por fim, portas controladas por motores de passo, que se abrem para permitir que as frutas caiam em caixas de acordo com o tipo de classificação.
+O robô será composto por uma esteira inclinada, um sistema embarcado para aquisição de dados, processamento e acionamentos, além de portinholas controladas. Ao passar pelo sistema, a maçã é classificada de acordo com seu tipo, e a portinhola do recipiente para este respectivo tipo é acionada. Ao fim da esteira há uma abertura para onde irão objetos que não foram classificados em uma das categorias predefinidas.
 
 ![imagem1](./images/3d/final.png)
 
