@@ -93,15 +93,15 @@ Como ideia inicial de projeto a esteira estará em funcionamento continuo e a fr
 
 ## Escolha do Processamento
 
-Comparando-se os fatores a,b,c (ex: requisitos de hardware, tempo de desenvolvimento, treinamento necessário, eficiência, tamanho), optou-se por utilizar a técnica XXX para a classificaão das imagens.
+Comparando-se os fatores a,b,c (ex: requisitos de hardware, tempo de desenvolvimento, treinamento necessário, eficiência, tamanho), optou-se por utilizar o método de aprendizado de máquina de rede neural convolucional(CNN) para a classificação das imagens, pois para análise de imagens dentre os três métodos principais são Arvore aleatória de decisão ( Random Forest) , Máquina de Vetores de Suporte(SVM) e rede neural convolucional(CNN) os outros dois métodos precisam de parâmetros mais determinados para encontrar padrões enquanto CNN consegue achar os padrões mais facilmente poupando tempo para o treinamento e criação do algoritmo.
 
 ### Escolha do modelo
 
-Os modelos A, B e C, se mostraram bastante presentes na literatura, o modelo A, escolheu-se, entretanto, o modelo X, pois apresenta melhor x y z.
+O modelo You Only look Once(YOLO) foi definido pois se trata de uma boa solução considerando os limites de hardware e tempo de processamento de imagem mantendo uma boa precisão na categorização das imagens.
 
 ### Escolha da Base de dados
 
-Para o treinamento do modelo é necessária uma base de dados....
+Para o treinamento do modelo é necessária uma base de dados, que foi definido como a base disponível nesse  [link](https://www.kaggle.com/datasets/chrisfilo/fruit-recognition?select=Apple) pois apresenta uma boa gama de imagens e já está categorizada em 6 tipos de maçãs o que se enquadra nos requisitos do projeto.
 
 
 ## Captura de Imagem
