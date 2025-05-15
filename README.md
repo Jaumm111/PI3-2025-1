@@ -88,3 +88,27 @@ Como ideia inicial de projeto a esteira estará em funcionamento continuo e a fr
 [^4]: Ji, W.; Wang, J.; Xu, B.; Zhang, T. Apple Grading Based on Multi-Dimensional View Processing and Deep Learning. Foods 2023, 12, 2117. https://doi.org/10.3390/foods12112117
 
 [^5]: Naik, Sapan & Patel, Bankim. (2017). Machine Vision based Fruit Classification and Grading - A Review. International Journal of Computer Applications. 170. 22-34. 10.5120/ijca2017914937. 
+
+# Segunda Etapa
+
+## Escolha do Processamento
+
+Comparando-se os fatores a,b,c (ex: requisitos de hardware, tempo de desenvolvimento, treinamento necessário, eficiência, tamanho), optou-se por utilizar a técnica XXX para a classificaão das imagens.
+
+### Escolha do modelo
+
+Os modelos A, B e C, se mostraram bastante presentes na literatura, o modelo A, escolheu-se, entretanto, o modelo X, pois apresenta melhor x y z.
+
+### Escolha da Base de dados
+
+Para o treinamento do modelo é necessária uma base de dados....
+
+
+## Captura de Imagem
+
+
+## Testes iniciais da parte eletromecânica.
+
+Testou-se os atuadores, motor da esteira e motor de passo. O motor da esteira foi testado alimentando-o diretametne com uma fonte para verificar sua velocidade de rolagem e força.
+
+O motor de passo foi testado com o driver, inicialmente este funcionou
