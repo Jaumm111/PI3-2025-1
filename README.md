@@ -284,6 +284,8 @@ Relizou-se então testes com o driver *HR4988SQ*, este driver funcionou corretam
 
 Testou-se a esteira alimentando-a diretamente com 12V. A esteira funcionou bem sem comentários adicionais.
 
+![gifesteira](./images/esteirasmall.gif)
+
 ## Referências
 
 [^1]: Borba, K. R., Sapelli, K. S., Spricigo, P. C., & Ferreira, M. D. (2017). Near infrared spectroscopy sugar quantification in intact orange. Citrus Research & Technology, 38(2). https://doi.org/10.4322/crt.ICC118
