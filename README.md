@@ -277,7 +277,9 @@ Considerando-se em uma aproximação o peso da porta de 200g e o torque do motor
 
 Como teste alternativo para a capacidade do motor de suportar o peso alimentou-se o motor diretamente na fonte, limitando sua corrente inicialmente me 400 mA (total para ambas as bobinas) e de forma incremental até 2 A (total para ambas as bobinas). Com valores menores de corrente o motor nao consegue manter a chapa paralela ao chão pivotando em torno do furo mais próximo à extremidade, porém, com 1,8 A o motor se mostrou suficiente.
 
-Relizou-se então testes com o driver *HR4988SQ*, este driver funcionou corretametne, porém apesar de ajustar o trimpot limitador de corrente, este driver não forneceu mais de 400 mA ao motor, o que foi insuficiente para mater o motor travado e perpendicular ao chão. Utilizando, entretanto, o furo mais central, o motor conseguiu mover a porta sem dificuldades. Foram testadas mudanças no microstep na tentativa de angariar mais torque, porém mesmo assim não foi possível utilizar o furo superio.
+Relizou-se então testes com o driver *HR4988SQ*, este driver funcionou corretametne, porém apesar de ajustar o trimpot limitador de corrente, este driver não forneceu mais de 400 mA ao motor, o que foi insuficiente para mater o motor travado e perpendicular ao chão. Utilizando, entretanto, o furo mais central, o motor conseguiu mover a porta sem dificuldades. Foram testadas mudanças no microstep na tentativa de angariar mais torque, porém mesmo assim não foi possível utilizar o furo superior.
+
+![giffail](./images/gif80.gif)
 
 
 Testou-se a esteira alimentando-a diretamente com 12V. A esteira funcionou bem sem comentários adicionais.
