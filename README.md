@@ -77,31 +77,21 @@ Como ideia inicial de projeto a esteira estará em funcionamento continuo e a fr
 
 [Classificação e reconhecimento de frutos por processamento digital de imagem para previsão da produção](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://ubibliorum.ubi.pt/bitstream/10400.6/7849/1/5700_11911.pdf&ved=2ahUKEwjA2_Tzh-CMAxUHF1kFHUCUKW4QFnoECBYQAQ&usg=AOvVaw3SoWpXwsvYiiUwejJIGhTX)
 
-## Referências
-
-[^1]: Borba, K. R., Sapelli, K. S., Spricigo, P. C., & Ferreira, M. D. (2017). Near infrared spectroscopy sugar quantification in intact orange. Citrus Research & Technology, 38(2). https://doi.org/10.4322/crt.ICC118
-
-[^2]: Bahareh Jamshidi, Ability of near-infrared spectroscopy for non-destructive detection of internal insect infestation in fruits: Meta-analysis of spectral ranges and optical measurement modes, Spectrochimica Acta Part A: Molecular and Biomolecular Spectroscopy, Volume 225, 2020, 117479,ISSN 1386-1425, https://doi.org/10.1016/j.saa.2019.117479.
-
-[^3]: Boulley, L et al. 2015. Near-infrared optical spectroscopy of sugar-based mixtures – A snapshot to identify issues of influence. In: Längle, T et al (eds.), OCM 2015 – 2nd International Conference on Optical Characterization of Materials, March 18th – 19th, 2015, Karlsruhe, Germany : Conference Proceedings. Karlsruhe: KIT Scientific Publishing. https://doi.org/10.58895/ksp/1000044906-3 
-
-[^4]: Ji, W.; Wang, J.; Xu, B.; Zhang, T. Apple Grading Based on Multi-Dimensional View Processing and Deep Learning. Foods 2023, 12, 2117. https://doi.org/10.3390/foods12112117
-
-[^5]: Naik, Sapan & Patel, Bankim. (2017). Machine Vision based Fruit Classification and Grading - A Review. International Journal of Computer Applications. 170. 22-34. 10.5120/ijca2017914937. 
 
 # Segunda Etapa
 
 ## Escolha do Processamento
 
-Comparando-se os fatores a,b,c (ex: requisitos de hardware, tempo de desenvolvimento, treinamento necessário, eficiência, tamanho), optou-se por utilizar o método de aprendizado de máquina de rede neural convolucional(CNN) para a classificação das imagens, pois para análise de imagens dentre os três métodos principais são Arvore aleatória de decisão ( Random Forest) , Máquina de Vetores de Suporte(SVM) e rede neural convolucional(CNN) os outros dois métodos precisam de parâmetros mais determinados para encontrar padrões enquanto CNN consegue achar os padrões mais facilmente poupando tempo para o treinamento e criação do algoritmo.
+Comparando-se os fatores requisitos de hardware, tempo de desenvolvimento, treinamento necessário, optou-se por utilizar o método de aprendizado de máquina de rede neural convolucional(CNN) para a classificação das imagens, pois para análise de imagens dentre os três métodos principais são Arvore aleatória de decisão ( Random Forest) , Máquina de Vetores de Suporte(SVM) e rede neural convolucional(CNN) os outros dois métodos precisam de parâmetros mais determinados para encontrar padrões enquanto CNN consegue achar os padrões mais facilmente poupando tempo para o treinamento e criação do algoritmo.
 
 ### Escolha do modelo
 
-O modelo You Only look Once(YOLO) foi definido pois se trata de uma boa solução considerando os limites de hardware e tempo de processamento de imagem mantendo uma boa precisão na categorização das imagens.
+O modelo You Only look Once(YOLO) versão YOLOv5n (nano) foi escolhida por ser uma das mais leves e otimizadas em termos de desempenho e precisão. Essas versões do YOLOv5 são adequadas para rodar em dispositivos com recursos limitados, como o ESP32, sem comprometer a qualidade da classificação. Ao avaliar alternativas, consideramos dois outros modelos populares: o MobileNet SSD e o Tiny YOLOv4. O MobileNet SSD é um modelo também otimizado para dispositivos embarcados, com uma versão quantizada que é bem leve e rápida. No entanto, ele tende a ser menos preciso do que o YOLOv5, especialmente quando se trata de detectar múltiplos objetos em imagens complexas. O Tiny YOLOv4, por outro lado, é uma versão mais compacta do YOLOv4, mas não é tão otimizada quanto o YOLOv5n, além de ser mais difícil de adaptar ao ESP32 devido ao seu tamanho maior e à necessidade de mais otimizações.
 
 ### Escolha da Base de dados
 
-Para o treinamento do modelo é necessária uma base de dados, que foi definido como a base disponível nesse  [link](https://www.kaggle.com/datasets/chrisfilo/fruit-recognition?select=Apple) pois apresenta uma boa gama de imagens e já está categorizada em 6 tipos de maçãs o que se enquadra nos requisitos do projeto.
+Para o treinamento do modelo é necessária uma base de dados, que foi definido como a base disponível nesse  [link](https://www.kaggle.com/datasets/chrisfilo/fruit-recognition?select=Apple) essa base de dados já oferece uma coleção de imagens rotuladas que cobrem diversas variações de maçãs, o que é crucial para a tarefa de classificação de tipos de maçãs. A diversidade das imagens e a rotulagem correta de diferentes tipos de maçãs permitem que o modelo aprenda a identificar características específicas de cada variedade.
+
 
 
 ## Captura de Imagem
@@ -274,3 +264,15 @@ no mesmo diretório onde o script server.py está sendo executado.
 Testou-se os atuadores, motor da esteira e motor de passo. O motor da esteira foi testado alimentando-o diretametne com uma fonte para verificar sua velocidade de rolagem e força.
 
 O motor de passo foi testado com o driver, inicialmente este funcionou
+
+## Referências
+
+[^1]: Borba, K. R., Sapelli, K. S., Spricigo, P. C., & Ferreira, M. D. (2017). Near infrared spectroscopy sugar quantification in intact orange. Citrus Research & Technology, 38(2). https://doi.org/10.4322/crt.ICC118
+
+[^2]: Bahareh Jamshidi, Ability of near-infrared spectroscopy for non-destructive detection of internal insect infestation in fruits: Meta-analysis of spectral ranges and optical measurement modes, Spectrochimica Acta Part A: Molecular and Biomolecular Spectroscopy, Volume 225, 2020, 117479,ISSN 1386-1425, https://doi.org/10.1016/j.saa.2019.117479.
+
+[^3]: Boulley, L et al. 2015. Near-infrared optical spectroscopy of sugar-based mixtures – A snapshot to identify issues of influence. In: Längle, T et al (eds.), OCM 2015 – 2nd International Conference on Optical Characterization of Materials, March 18th – 19th, 2015, Karlsruhe, Germany : Conference Proceedings. Karlsruhe: KIT Scientific Publishing. https://doi.org/10.58895/ksp/1000044906-3 
+
+[^4]: Ji, W.; Wang, J.; Xu, B.; Zhang, T. Apple Grading Based on Multi-Dimensional View Processing and Deep Learning. Foods 2023, 12, 2117. https://doi.org/10.3390/foods12112117
+
+[^5]: Naik, Sapan & Patel, Bankim. (2017). Machine Vision based Fruit Classification and Grading - A Review. International Journal of Computer Applications. 170. 22-34. 10.5120/ijca2017914937. 
