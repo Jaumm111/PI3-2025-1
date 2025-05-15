@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"**/project.sigasi": "jsonc",
+			"**/.sigasi/**/compilation.log": "shellscript",
+			"**/.sigasi/**/compilation.plan": "json",
+			"cam_hal.h": "c"
+		}
+	}
+}
