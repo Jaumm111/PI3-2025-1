@@ -158,9 +158,72 @@ Salvar e sair.
 O código realiza as seguintes funções:
 
 1. *Inicializa a câmera*
+
+```
+esp_err_t init_camera() {
+    esp_err_t err = esp_camera_init(&camera_config);
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG, "Falha ao inicializar câmera");
+        return err;
+    }
+    return ESP_OK;
+}
+```
+
 2. *Conecta-se a uma rede Wi-Fi*
+
+```
+void wifi_init() {
+    ESP_ERROR_CHECK(esp_netif_init());
+    ESP_ERROR_CHECK(esp_event_loop_create_default());
+    esp_netif_create_default_wifi_sta();
+
+    wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
+    ESP_ERROR_CHECK(esp_wifi_init(&cfg));
+
+    esp_event_handler_instance_t instance_any_id;
+    esp_event_handler_instance_t instance_got_ip;
+    ESP_ERROR_CHECK(esp_event_handler_instance_register(WIFI_EVENT,
+                                                        ESP_EVENT_ANY_ID,
+                                                        &wifi_event_handler,
+                                                        NULL,
+                                                        &instance_any_id));
+    ESP_ERROR_CHECK(esp_event_handler_instance_register(IP_EVENT,
+                                                        IP_EVENT_STA_GOT_IP,
+                                                        &wifi_event_handler,
+                                                        NULL,
+                                                        &instance_got_ip));
+
+    wifi_config_t wifi_config = {
+        .sta = {
+            .ssid = WIFI_SSID,
+            .password = WIFI_PASS,
+            .threshold.authmode = WIFI_AUTH_WPA2_PSK,
+        },
+    };
+    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+    ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_config));
+    ESP_ERROR_CHECK(esp_wifi_start());
+}
+```
+
 3. *Captura uma imagem a cada 5 segundos*
+
+```
+        camera_fb_t *fb = esp_camera_fb_get();
+        if (!fb) {
+            ESP_LOGE(TAG, "Falha ao obter frame da câmera");
+            continue;
+        }
+        ...
+        vTaskDelay(pdMS_TO_TICKS(5000));// A cada 5 segundos
+```
+
 4. *Envia a imagem via HTTP POST para um servidor local*
+
+```
+void send_http_post(uint8_t *image_data, size_t image_len) 
+```
 
 ### Servidor Python (server.py)
 
