@@ -105,7 +105,106 @@ Para o treinamento do modelo é necessária uma base de dados, que foi definido 
 
 
 ## Captura de Imagem
+### Ferramentas Utilizadas
 
+| Componente | Função |
+|-----------|--------|
+| ESP32-S | Controlador principal, responsável pela comunicação com a câmera|
+| Câmera OV2640 | Sensor de imagem |
+| Driver CH340 / Cabo USB-A para micro USB-B | Interface de programação e depuração serial entre o computador e o ESP32 |
+| VSCode + Extensão ESP-IDF | Ambiente de desenvolvimento |
+| Python + Flask | Servidor local que recebe e salva as imagens enviadas pelo ESP32 |
+
+---
+
+###  Funcionalidades Implementadas
+
+- Inicialização da câmera OV2640
+- Configuração dos pinos GPIO para comunicação com a câmera
+- Conexão automática à rede Wi-Fi
+- Captura de imagem a cada 5 segundos
+- Codificação da imagem em formato JPEG
+- Envio da imagem via HTTP POST para um servidor local
+- Armazenamento da imagem no computador via servidor Python
+
+###  Configuração do Ambiente de Desenvolvimento
+
+### 1. Instalação do ambiente ESP-IDF
+
+- Baixar e instalar o [ESP-IDF](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html).
+- Configurar o ambiente no *VSCode* usando a extensão fornecida pelo fabricante *ESP-IDF*.
+
+### 2. Configuração do projeto
+
+No terminal do VSCode:
+
+idf.py set-target esp32
+
+idf.py menuconfig
+
+
+Dentro do menuconfig, habilitar:
+
+- *PSRAM*: Component config → ESP32-specific → Support for external, SPI-connected RAM
+- *Wi-Fi*: Component config → Wi-Fi
+- *Camera Driver*: Component config → Camera driver
+
+Salvar e sair.
+
+---
+
+###  Código do ESP32 
+
+O código realiza as seguintes funções:
+
+1. *Inicializa a câmera*
+2. *Conecta-se a uma rede Wi-Fi*
+3. *Captura uma imagem a cada 5 segundos*
+4. *Envia a imagem via HTTP POST para um servidor local*
+
+### Servidor Python (server.py)
+
+Roda um servidor simples com *Flask* para receber e salvar a imagem.
+
+### Dependências:
+
+pip install flask
+
+
+###  Passo a Passo para Execução
+
+### 1. Ligar o ESP32-CAM
+
+- Conectar o ESP32-CAM ao computador via cabo USB.
+- Selecionar a porta no VSCode.
+
+### 2. Compilar e gravar o firmware
+
+No terminal do VSCode:
+
+idf.py build
+
+idf.py flash
+
+idf.py monitor
+
+
+### 3. Executar o servidor Python
+
+Em outro terminal:
+
+python server.py
+
+
+### 4. Verificar a imagem recebida
+
+Após alguns segundos, o ESP32 enviará uma imagem JPEG, que será salva como:
+
+
+imagem_recebida.jpg
+
+
+no mesmo diretório onde o script server.py está sendo executado.
 
 ## Testes iniciais da parte eletromecânica.
 
