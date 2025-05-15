@@ -261,9 +261,20 @@ no mesmo diretório onde o script server.py está sendo executado.
 
 ## Testes iniciais da parte eletromecânica.
 
-Testou-se os atuadores, motor da esteira e motor de passo. O motor da esteira foi testado alimentando-o diretametne com uma fonte para verificar sua velocidade de rolagem e força.
+Para o teste da parte eletromecânica, confeccionou-se uma das portas do sistema em MDF. Efetuou-se 4 furos nas laterais, à fim de agirem como eixo pivotante. Mais próximos a limite superior são os furos inicialmente projetados, e os furos inferiores foram realizados para, caso o torque do motor seja insufuciente, reduza-se a alavanca, e portanto, a exigência deste parâmetro. Para fixação do eixo no mdf de forma a evitar a destruição da porta, utilizou-se duas chapas de metal parafusadas de forma a comprimir a peça.
 
-O motor de passo foi testado com o driver, inicialmente este funcionou
+![imagem2](./images/Diagrama/PI3.drawio.png)
+
+Para os testes do motor de passo *NEMA 17* de código *17HS8401* foi utilizado o ESP32S, um driver *HR4988SQ*, e um driver *DRV8825*, além de fontes de bancada de tensão variável com limitador de corrente ajustável. A atuação com o driver DVR8825 inicialmente funcionou, porém após a troca de um cabo de fonte o driver passou a consumir 150 mA de corrente em seus pinos de controle. Mesmo substituindo por um modelo novo, não obteve-se sucesso em utilizá-lo para o controle. 
+
+Considerando-se em uma aproximação o peso da porta de 200g e o torque do motor de 5,2 Kgf.cm e uma alavanca de 24 cm o motor seria suficiente com pouca margem. Porém esta aproximação considera que o peso estaria todo na ponta da alvanca e não distribuído ao longo de seu comprimento, gerando assim uma margem que prevê o motor como adequado.
+
+Como teste alternativo para a capacidade do motor de suportar o peso alimentou-se o motor diretamente na fonte, limitando sua corrente inicialmente me 400 mA (total para ambas as bobinas) e de forma incremental até 2 A (total para ambas as bobinas). Com valores menores de corrente o motor nao consegue manter a chapa paralela ao chão pivotando em torno do furo mais próximo à extremidade, porém, com 1,8 A o motor se mostrou suficiente.
+
+Relizou-se então testes com o driver *HR4988SQ*, este driver funcionou corretametne, porém apesar de ajustar o trimpot limitador de corrente, este driver não forneceu mais de 400 mA ao motor, o que foi insuficiente para mater o motor travado e perpendicular ao chão. Utilizando, entretanto, o furo mais central, o motor conseguiu mover a porta sem dificuldades. Foram testadas mudanças no microstep na tentativa de angariar mais torque, porém mesmo assim não foi possível utilizar o furo superio.
+
+
+Testou-se a esteira alimentando-a diretamente com 12V. A esteira funcionou bem sem comentários adicionais.
 
 ## Referências
 
