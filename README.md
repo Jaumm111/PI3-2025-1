@@ -296,6 +296,24 @@ Utilizou-se como material uma combinação de MDF, MDP e madeira natural para cr
 - 1 suporte tipo mesa para fixação da câmera e restante da parte eletrônica.
 - 1 cancela para reter o avanço das frutas sub a câmera, possibilitanto girar a fruta.
 
+Todo o material foi doado ou reaproveitado. Encontrou-se inicialmente dificuldades devido à inexperiência com trabalho em madeira, porém significativas evoluções ocorreram. A primeira mesa montada pela equipe, vista na imagem abaixo, ficou bastante torta e pouco estável. Esta mesa foi refeita, com outro material e utilizando-se de outras técnicas de fixação e de design, gerando um resultado muito mais bem acabado e estável.
+
+![imagemmesavelha](./images/entrega3/mesa.jpg)
+
+A nova mesa pode ser vista na imagem abaixo, além de uma estrutura mais reforçada, o método de fixação deixou de ser pregos e passou a ser parafusos transpassados e porcas.
+
+![mesanova](./images/entrega3/mesanova.jpg)
+
+Foram também feitas as portas que serão responsáveis por impedir que as maçãs caiam nos compartimentos errados. Essas portas podem ser vistas na imagem abaixo.
+
+![portas](./images/entrega3/2portas.jpg)
+
+## Teste dos acionamentos
+
+
+
+## Sinconização dos atuadores
+
 
 
 ## Referências
