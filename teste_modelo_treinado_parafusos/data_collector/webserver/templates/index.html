@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Uploaded Pictures</title>
+</head>
+<body>
+    <h1>Uploaded Pictures</h1>
+    <ul>
+        {% for file in files %}
+        <!-- display all the uploaded pictures -->
+        <li>
+            <img src="{{ url_for('static', filename='uploads/' + file) }}" alt=" {{ file }}">
+            <p>Filename: {{ file }}</p>
+
+            <form method="POST" action="/delete/{{ file }}">
+                <input type="submit" value="Delete">
+            </form>
+            <!-- download a picture with a custom name -->
+            <form method="POST" action="/download/{{ file }}">
+                <input type="text" name="custom_name" placeholder="Custom name">
+                <input type="submit" value="Download">
+            </form>
+        <li>
+        {% endfor %}
+    </ul>
+    <h2>Upload a Picture</h2>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>
+
+
+
+
