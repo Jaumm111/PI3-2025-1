@@ -308,6 +308,30 @@ Foram também feitas as portas que serão responsáveis por impedir que as maç�
 
 ![portas](./images/entrega3/2portas.jpg)
 
+## Treinamento e implementação de modelo
+
+### Treinamento inicial
+
+Utilizando-se do google colab treinou-se um modelo YOLOv 5S com a base de dados selecionada na etapa 2, em testes utilizando imagens de alta resolução e sem pré-processamento algum o modelo apresentou uma alta taxa de falsos positivos, o modelo não foi testado com muitas imagens ou com pré-processamento. O modelo levou 11 ms para classificar uma imagem de alta resolução em um computador desktop.
+
+Um breve snippet do trinamento pode ser visto abaixo
+
+```
+
+
+```
+
+### Implementação
+
+Por não apresentar resultados satisfatórios este modelo não foi implementado no ESP, optando-se por implementar um modelo pré treinado para verificar a viabiliade do ESP escolhido para a classificação.
+
+Implementou-se então um modelo pré treinado que classifica parafusos em 3 categorias: pequeno, grande e preto. O modelo foi pré treinado com 300 epochs, sendo apenas um modelo exemplo, ele foi capaz de distinguir parafusos de outros objetos, e apresentou performance satisfatória para os testes iniciais em classificar por tamanho. O modelo pré treinado levou 1,4 segundos para classificar uma imagem, indicando que ou otimizações serão necessárias, ou será necessário o uso de hardware mais potente para o produto final.
+
+Uma breve demonstração pode ser vista abaixo.
+
+![gifparafuso](./images/entrega3/briangif.gif)
+
+
 ## Teste dos acionamentos
 
 
