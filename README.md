@@ -286,6 +286,18 @@ Testou-se a esteira alimentando-a diretamente com 12V. A esteira funcionou bem s
 
 ![gifesteira](./images/esteirasmall.gif)
 
+# Terceira Etapa
+
+## Estrutura física da seletora
+
+Utilizou-se como material uma combinação de MDF, MDP e madeira natural para criar a estrutura composta por:
+
+- 2 portas móveis atuadas por motores de passo e sua estrutura de suporte.
+- 1 suporte tipo mesa para fixação da câmera e restante da parte eletrônica.
+- 1 cancela para reter o avanço das frutas sub a câmera, possibilitanto girar a fruta.
+
+
+
 ## Referências
 
 [^1]: Borba, K. R., Sapelli, K. S., Spricigo, P. C., & Ferreira, M. D. (2017). Near infrared spectroscopy sugar quantification in intact orange. Citrus Research & Technology, 38(2). https://doi.org/10.4322/crt.ICC118
