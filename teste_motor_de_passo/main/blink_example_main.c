@@ -1,0 +1,82 @@
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "driver/gpio.h"
+#include "driver/ledc.h"
+#include <stdio.h>
+
+#define PIN_EN    GPIO_NUM_32
+#define PIN_RST   GPIO_NUM_33
+#define PIN_STEP  GPIO_NUM_26
+#define PIN_DIR   GPIO_NUM_25
+#define PIN_SLEEP GPIO_NUM_27  // connect SLEEP to GPIO27 or tie to 3.3V if unused
+
+void abre_porta(void){
+
+}
+
+void app_main(void)
+{
+    // Configure pins
+    gpio_config_t io_conf = {
+        .pin_bit_mask = (1ULL << PIN_EN) | (1ULL << PIN_RST) | (1ULL << PIN_DIR) | (1ULL << PIN_SLEEP),
+        .mode = GPIO_MODE_OUTPUT,
+        .pull_up_en = GPIO_PULLUP_DISABLE,
+        .pull_down_en = GPIO_PULLDOWN_DISABLE,
+        .intr_type = GPIO_INTR_DISABLE,
+    };
+    gpio_config(&io_conf);
+
+    // STEP pin config separately for PWM
+    gpio_set_direction(PIN_STEP, GPIO_MODE_OUTPUT);
+
+    // Reset pulse: RST low then high
+    gpio_set_level(PIN_RST, 0);
+    vTaskDelay(pdMS_TO_TICKS(10));
+    gpio_set_level(PIN_RST, 1);
+
+    // Enable the driver (active LOW)
+    gpio_set_level(PIN_EN, 0);
+
+    // Wake up driver (active HIGH)
+    gpio_set_level(PIN_SLEEP, 1);
+
+    // Setup LEDC PWM for STEP pin at 300Hz, 50% duty
+    ledc_timer_config_t ledc_timer = {
+        .speed_mode = LEDC_LOW_SPEED_MODE,
+        .timer_num = LEDC_TIMER_0,
+        .duty_resolution = LEDC_TIMER_10_BIT,  // 10-bit resolution (0-1023)
+        .freq_hz = 1200,
+        .clk_cfg = LEDC_AUTO_CLK,
+    };
+    ledc_timer_config(&ledc_timer);
+
+    ledc_channel_config_t ledc_channel = {
+        .gpio_num = PIN_STEP,
+        .speed_mode = LEDC_LOW_SPEED_MODE,
+        .channel = LEDC_CHANNEL_0,
+        .timer_sel = LEDC_TIMER_0,
+        .duty = 512,  // 50%
+        .hpoint = 0,
+    };
+    ledc_channel_config(&ledc_channel);
+
+    int direction = 1;
+
+    while (1) {
+        // Run in current direction
+        gpio_set_level(PIN_DIR, direction);  // Set direction
+        ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, 512); // Resume PWM
+        ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0);
+
+        vTaskDelay(pdMS_TO_TICKS(200));  // Run for 1 second
+
+        // Stop PWM (motor idle)
+        ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, 0);
+        ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0);
+
+        vTaskDelay(pdMS_TO_TICKS(1000));  // Wait 1 second before changing direction
+
+        // Toggle direction
+        direction = !direction;
+    }
+}
