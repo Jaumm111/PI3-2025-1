@@ -48,8 +48,10 @@ Uma breve demonstração pode ser vista abaixo.
 
 Para acionar os motores de passo foi usado o driver DRV8825 foi usado o esquemático de base mostrado na imagem abaixo:
 
-![esquema](../images/entrega3/esquema.webp)
+![esquema](../images/entrega3/esquema.webp)[^1]
+
 Utilizando funcões em C para definir os acionamentos:
+
 ```
 void abre_porta(void){
     int direction = 1;
@@ -149,14 +151,5 @@ Abaixo os videos da rotina funcionando(primeiro somente a cancela e a porta segu
 ![video_tudo](../images/entrega3/sincronizacao_esteira_cancela_porta.mp4)
 
 ## Referências
-
-[^1]: Borba, K. R., Sapelli, K. S., Spricigo, P. C., & Ferreira, M. D. (2017). Near infrared spectroscopy sugar quantification in intact orange. Citrus Research & Technology, 38(2). https://doi.org/10.4322/crt.ICC118
-
-[^2]: Bahareh Jamshidi, Ability of near-infrared spectroscopy for non-destructive detection of internal insect infestation in fruits: Meta-analysis of spectral ranges and optical measurement modes, Spectrochimica Acta Part A: Molecular and Biomolecular Spectroscopy, Volume 225, 2020, 117479,ISSN 1386-1425, https://doi.org/10.1016/j.saa.2019.117479.
-
-[^3]: Boulley, L et al. 2015. Near-infrared optical spectroscopy of sugar-based mixtures – A snapshot to identify issues of influence. In: Längle, T et al (eds.), OCM 2015 – 2nd International Conference on Optical Characterization of Materials, March 18th – 19th, 2015, Karlsruhe, Germany : Conference Proceedings. Karlsruhe: KIT Scientific Publishing. https://doi.org/10.58895/ksp/1000044906-3 
-
-[^4]: Ji, W.; Wang, J.; Xu, B.; Zhang, T. Apple Grading Based on Multi-Dimensional View Processing and Deep Learning. Foods 2023, 12, 2117. https://doi.org/10.3390/foods12112117
-
-[^5]: Naik, Sapan & Patel, Bankim. (2017). Machine Vision based Fruit Classification and Grading - A Review. International Journal of Computer Applications. 170. 22-34. 10.5120/ijca2017914937. 
+[^1]:https://www.marinostore.com/automacao/driver-motor-de-passo-drv8825
 
