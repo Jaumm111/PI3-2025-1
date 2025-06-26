@@ -46,13 +46,107 @@ Uma breve demonstração pode ser vista abaixo.
 
 ## Teste dos acionamentos
 
+Para acionar os motores de passo foi usado o driver DRV8825 foi usado o esquemático de base mostrado na imagem abaixo:
 
-![video](../images/entrega3/acionamento_cancela.mp4)
+![esquema](../images/entrega3/esquema.webp)
+Utilizando funcões em C para definir os acionamentos:
+```
+void abre_porta(void){
+    int direction = 1;
+
+    // Run in current direction
+    gpio_set_level(PIN_DIR_1, direction);  // Set direction
+    ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_1, 512); // Resume PWM
+    ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_1);
+
+    vTaskDelay(pdMS_TO_TICKS(400));  // Run for 1 second
+
+    // Stop PWM (motor idle)
+    ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_1, 0);
+    ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_1);
+}
+void fecha_porta(void){
+    int direction = 0;
+
+    // Run in current direction
+    gpio_set_level(PIN_DIR_1, direction);  // Set direction
+    ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_1, 512); // Resume PWM
+    ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_1);
+
+    vTaskDelay(pdMS_TO_TICKS(400));  // Run for 1 second
+
+    // Stop PWM (motor idle)
+    ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_1, 0);
+    ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_1);
+}
+void libera_cancela(void){
+    int direction = 1;
+
+    // Run in current direction
+    gpio_set_level(PIN_DIR_0, direction);  // Set direction
+    ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, 512); // Resume PWM
+    ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0);
+
+    vTaskDelay(pdMS_TO_TICKS(900));  // Run for 1 second
+
+    // Stop PWM (motor idle)
+    ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, 0);
+    ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0);
+
+    vTaskDelay(pdMS_TO_TICKS(1500));  // Wait 1 second before changing direction
+
+    // Toggle direction
+    direction = !direction;
+
+    // Run in current direction
+    gpio_set_level(PIN_DIR_0, direction);  // Set direction
+    ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, 512); // Resume PWM
+    ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0);
+
+    vTaskDelay(pdMS_TO_TICKS(900));  // Run for 1 second
+
+    // Stop PWM (motor idle)
+    ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, 0);
+    ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0);
+}
+
+```
+![video_cancela](../images/entrega3/acionamento_cancela.mp4)
+![video_porta](../images/entrega3/acionamento_porta_1.mp4)
+
+Para o acionamento da esteira foi usado o mosfet 2N7000 como driver para o mosfet IRF540N como mostrado no esquemático abaixo:
+
+![esquema](../images/entrega3/esquema_esteira.png)
+
+Dessa forma o acionamento fica invertido abaixo os comandos utilizados para controlar a esteira:
+```
+gpio_set_level(PIN_EST, 0); //Aciona esteira
+gpio_set_level(PIN_EST, 1); //Para a esteira
+```
+
+![video_esteira](../images/entrega3/acionamento_esteira_com_esp.mp4)
 
 
 ## Sinconização dos atuadores
 
+Com os acionamentos individuais funcionando foi feito uma rotina simulando a identifação de uma maçã e selecionando ela na porta 1, código da rotina abaixo:
+```
+        abre_porta();
+        
+        vTaskDelay(pdMS_TO_TICKS(100));
+        gpio_set_level(PIN_EST, 0);
+        libera_cancela();
 
+        vTaskDelay(pdMS_TO_TICKS(1500));
+
+        fecha_porta();
+        gpio_set_level(PIN_EST, 1);
+        vTaskDelay(pdMS_TO_TICKS(3000));
+```
+Abaixo os videos da rotina funcionando(primeiro somente a cancela e a porta segundo com a esteira junto):
+
+![video_passo](../images/entrega3/sincronizacao_cancela_e_porta.mp4)
+![video_tudo](../images/entrega3/sincronizacao_esteira_cancela_porta.mp4)
 
 ## Referências
 
