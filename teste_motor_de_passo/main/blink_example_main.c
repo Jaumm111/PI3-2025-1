@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 #define PIN_EN      GPIO_NUM_32
-#define PIN_RST     GPIO_NUM_33
+#define PIN_EST     GPIO_NUM_16
 #define PIN_STEP_0  GPIO_NUM_15 //STEP cancela
 #define PIN_DIR_0   GPIO_NUM_14 //DIR cancela
 #define PIN_STEP_1  GPIO_NUM_12 //STEP porta 1
@@ -75,7 +75,7 @@ void app_main(void)
 {
     // Configure pins
     gpio_config_t io_conf = {
-        .pin_bit_mask = (1ULL << PIN_EN) | (1ULL << PIN_RST) | (1ULL << PIN_DIR_0)| (1ULL << PIN_DIR_1),
+        .pin_bit_mask = (1ULL << PIN_EN) | (1ULL << PIN_EST) | (1ULL << PIN_DIR_0)| (1ULL << PIN_DIR_1),
         .mode = GPIO_MODE_OUTPUT,
         .pull_up_en = GPIO_PULLUP_DISABLE,
         .pull_down_en = GPIO_PULLDOWN_DISABLE,
@@ -83,15 +83,16 @@ void app_main(void)
     };
     gpio_config(&io_conf);
 
+    gpio_set_level(PIN_EST, 1);
     // STEP pin config separately for PWM
     gpio_set_direction(PIN_STEP_0, GPIO_MODE_OUTPUT);
     gpio_set_direction(PIN_STEP_1, GPIO_MODE_OUTPUT);
 
     // Reset pulse: RST low then high
-    gpio_set_level(PIN_RST, 0);
+    /*gpio_set_level(PIN_RST, 0);
     vTaskDelay(pdMS_TO_TICKS(10));
     gpio_set_level(PIN_RST, 1);
-
+    */
     // Enable the driver (active LOW)
     gpio_set_level(PIN_EN, 0);
 
@@ -148,13 +149,17 @@ void app_main(void)
 
         // Toggle direction
         direction = !direction;*/
+
         abre_porta();
+        
         vTaskDelay(pdMS_TO_TICKS(100));
+        gpio_set_level(PIN_EST, 0);
         libera_cancela();
 
         vTaskDelay(pdMS_TO_TICKS(1500));
 
         fecha_porta();
+        gpio_set_level(PIN_EST, 1);
         vTaskDelay(pdMS_TO_TICKS(3000));
 
     }
