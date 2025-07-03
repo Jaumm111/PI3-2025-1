@@ -334,10 +334,21 @@ Uma breve demonstração pode ser vista abaixo.
 
 ## Teste dos acionamentos
 
+Testou-se individualmente os acionamentos nas portas e na cancela e peorcebeu-se que não é necessário que as portas fiquem paralelas ao chão, e que ao tentar fazê-lo, o motor de passo não tem força suficiente e a porta acaba caindo, possíveis soluções são alívio de peso da porta e a substituição do motor por um mais forte. Entretanto o motor consegue manter a porta aberta o suficiente para permitir a passagem de uma fruta, e portanto o desenvolvimento pod seguir sem grandes alterações.
+![gifporta](./images/entrega3/porta.gif)
+
+
+A esteira foi acionada com sucesso utilizando-se do esp, e de 2 transistores, 1 2N7000 atuando como driver e um IRF540N. O esquematico do circuito pode ser visto abaixo, bem como seu funcionamento.
+![esquemaesteira](./images/entrega3/esquema_esteira.png)
+![gifesteira](./images/entrega3/esteira.gif)
+
+A cancela também foi acionada sem problemas.
+![gifcancela](./images/entrega3/cancela.gif)
 
 
 ## Sinconização dos atuadores
-
+Para os testes iniciais de sinconização programou-se uma rotina temporizada da seguinte forma: abre-se cancela e porta e aciona-se a esteira -> fecha-se a cancela -> fecha-se a porta e para-se a esteira. Este funcionamento pode ser visto no GIF abaixo.
+![gifsincro](./images/entrega3/sincronizacao_gif.gif)
 
 
 ## Referências
