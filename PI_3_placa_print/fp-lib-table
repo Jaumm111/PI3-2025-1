@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "PI_3_placa")(type "KiCad")(uri "D:/Downloads/ifsc/PI3/AGRVAI/placa/PI_3_placa")(options "")(descr ""))
+  (lib (name "PI_footprint")(type "KiCad")(uri "${KIPRJMOD}/PI_footprint.pretty")(options "")(descr ""))
+)
