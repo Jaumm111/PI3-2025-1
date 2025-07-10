@@ -358,6 +358,32 @@ Para os testes iniciais de sinconização programou-se uma rotina temporizada da
 
 ![gifsincro](./images/entrega3/sincronizacao_gif.gif)
 
+# Quarta etapa
+
+## Confecção da PCB
+
+Para a integração entre o processamento e acionamentos foi elaborada uma PCB, com o papel de conectar o ESP aos drivers e demais componentes, e de fornecer as devidas interfaces de conexão bem como alimentação para os componentes.
+
+
+## Treinamento do Modelo
+
+Para o treinamento adequado do modelo utilizou-se [deste](https://www.kaggle.com/datasets/chrisfilo/fruit-recognition/data) do banco de imagens e da plataforma [Roboflow](https://app.roboflow.com/), esta plataforma permite a criação de um projeto, upload da base de dados, e oferece ferramentas para gerenciamento do projeto, anotação de imagens e mais. Dentro da plataforma foi criado um projeto, carregado o banco de dados contendo as imagens, separadas as imagens a ser usadas para treinamento, validação e teste, e os membros podem individualmente e independentemente anotar imagens. 
+
+Foram criadas 4 classes para maçãs, sendo elas: nacional (abrangendo gala e fuji), argentina, pink (correspondente ao tipo pink lady) e verde. Até o momento foram classificadas cerca de 1000 imagens sendo que a maioria delas contem mais de uma fruta, forma então classificados aproximadamente mil objetos de cada classe.
+
+![classearg](./images/entrega4/classearg.png)
+
+
+
+## Separação das Frutas
+
+
+
+
+## Ajustes de sincronização
+
+
+
 
 ## Referências
 
