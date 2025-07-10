@@ -364,6 +364,10 @@ Para os testes iniciais de sinconização programou-se uma rotina temporizada da
 
 Para a integração entre o processamento e acionamentos foi elaborada uma PCB, com o papel de conectar o ESP aos drivers e demais componentes, e de fornecer as devidas interfaces de conexão bem como alimentação para os componentes.
 
+O layout inicial da PCB pode ser visto abaixo.
+![layoutp1](./images/entrega4/layout_inicial.png)
+
+
 
 ## Treinamento do Modelo
 
