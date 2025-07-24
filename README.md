@@ -405,6 +405,8 @@ Em imagens da internet o desempenho apresenta variações, desempenhando muito b
 
 Abaixo segue a classificação de algumas imagens da internet, mais imagens podem ser encontradas na pasta do [Google Drive](https://drive.google.com/drive/folders/1eUns3YBccAsm3urnZM-7gGBlzAcRlj5u?usp=sharing), as imagens de validação para cada teste se encontram dentro da subpasta runs>detect>nome_do_teste.
 
+![fdst](./images/entrega4/fromdataset.jpg)
+
 ![vdata1](./images/entrega4/class1.jpg)
 ![inetclass1](./images/entrega4/class2.jpg)
 ![inetclass2](./images/entrega4/class3.jpg)
