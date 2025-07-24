@@ -382,7 +382,7 @@ O foram feitos mais de 10 treinamentos de modelo, com diferentes parâmetros de 
 
 O treinamento dos modelos assim como alguns testes de validação e conversão foram inicialmente feitos neste  [Notebook do Colab](https://colab.research.google.com/drive/1OkuWUN6HiTaSCjiW95Y2XHSDLfaRnJr2?usp=sharing) e posteriormente a conversão foi feita em ambiente local por questões de compatibilidade.
 
-Os treinamentos foram realizados com as imagens em duas resoluções, 96x96 e 640x640. O treinamento com imagens de maior resolução converge muito mais rápido para altas taxas de precisão e recall. Porém o modelo treinado com imagens 96x96 também apresentou boas métricas no fim do treinamento e acabou se desempenhando melhor com imagens do ESP e gera um arquivo menor para ser gravado no ESP.
+Os treinamentos foram realizados com as imagens em duas resoluções, 96x96 e 640x640. O treinamento com imagens de maior resolução converge muito mais rápido para altas taxas de precisão e recall. Porém o modelo treinado com imagens 96x96 também apresentou boas métricas no fim do treinamento e acabou se desempenhando melhor com imagens do ESP e apresenta menor tempo de treinamento.
 
 Abaixo está uma imagem com as métricas do modelo treinado com imagens de *640x640*
 ![res640](./images/entrega4/resultado640.jpg)
