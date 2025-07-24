@@ -380,28 +380,37 @@ Foram criadas 4 classes para maçãs, sendo elas: nacional (abrangendo gala e fu
 
 O foram feitos mais de 10 treinamentos de modelo, com diferentes parâmetros de resolução e epochs. Os modelos foram treinados no formato YOLO, porém para implementação no microcontrolador se faz necessária sua conversão para TFLite. 
 
-Inicialmente os primeiros modelos convertidos não podiam ser gravados no ESP, sendo necessários ajustes nos parçametros de conversão, a documentação utilizada como base para o projeto e para a conversão se dava em uma toolchain antiga e vários problemas de dependências apareceram ao longo do caminho. Além da instalação manual de pacotes e dependencias em snapshots antigos dos repositórios, foi configurado um ambiente docker para a utilização destes pacotes. Entretanto, posteriormente o problema foi resolvido com a modificação do código de conversão.
+O treinamento dos modelos assim como alguns testes de validação e conversão foram inicialmente feitos neste  [Notebook do Colab](https://colab.research.google.com/drive/1OkuWUN6HiTaSCjiW95Y2XHSDLfaRnJr2?usp=sharing) e posteriormente a conversão foi feita em ambiente local por questões de compatibilidade.
+
+Os modelos convertidos no ambiente do colab não podiam ser gravados no ESP, sendo necessários ajustes nos parâmetros de treinamento e conversão, a documentação utilizada como base para o projeto e para a conversão se dava em uma toolchain antiga e vários problemas de dependências apareceram ao longo do caminho. Além da instalação manual de pacotes e dependencias em snapshots antigos dos repositórios, foi configurado um ambiente docker para a utilização destes pacotes. Entretanto, posteriormente o problema foi resolvido configurando-se uma toolchain mais antiga em ambiente local em uma das máquinas da equipe.
+
+
 
 ## Testes do modelo
 
 Após o treinamento do modelo, é feita uma validação deste, com imagens do banco de dados separadas especificamente para este propósito. Dentro do dataset base, o modelo treinado apresenta uma taxa de acerto muito próxima de 100%, reconhecendo e classificando corretamente as maçãs. 
 
-![vdata1](./images/entrega4/vdata1.png)
+Em imagens da internet o desempenho apresenta variações, desempenhando muito bem em imagens com poucas maçãs e fundo uniforme, porém se confundindo um pouco quando há muitas maçãs sobrepostas em imagens de baixa qualidade, maçãs parcialmente maduras às vezes são classificadas como verdes, e há uma certa margem de erro entre maçãs nacionais e a classe pink (variedade Pink Lady).
 
-Em imagens da internet o desempenho apresenta variações, desempenhando muito bem em imagens com poucas maçãs e fundo uniforme, porém se confundindo um pouco quando há muitas maçãs sobrepostas, maçãs parcialmente maduras às vezes são classificadas como verdes, e há uma certa margem de erro entre maçãs nacionais e a classe pink (variedade Pink Lady).
+Abaixo segue a classificação de algumas imagens da internet, mais imagens podem ser encontradas na pasta do [Google Drive](https://drive.google.com/drive/folders/1eUns3YBccAsm3urnZM-7gGBlzAcRlj5u?usp=sharing), as imagens de validação para cada teste se encontram dentro da subpasta runs>detect>nome_do_teste.
 
-![inetclass1](./images/entrega4/inetclass1.png)
+![vdata1](./images/entrega4/class1.jpg)
+![inetclass1](./images/entrega4/class2.jpg)
+![inetclass2](./images/entrega4/class3.jpg)
+![inetclass1](./images/entrega4/class9.jpg)
 
 ## Implementação do modelo no ESP
 
 O modelo convertido foi implementado no ESP, utilizando-se do projeto dos parafusos como base, foi necessária a remoção de uma instrução do modelo para que este pudesse ser gravado no ESP.
-Nos testes iniciais o modelo parece sempre ter 50% de certeza que há uma maçã na imagem. Este problema pode ser originário da conversão do modelo ou de algum problema no projeto (inicialização incorreta da câmera por exemplo). Para encontrar a origem do problema foi feito um teste onde o ESP apenas transmite as imagens e roda-se o modelo *já convertido* no computador. Nestes testes averiguou-se que o ultimo modelo treinado e convertido tem uma excelente taxa de reconhecimento de maçãs, porém com uma taxa elevada de falsos positivos. Elevando-se o limiar de certeza para cerca de 95% reduz-se significativamente a taxa de falsos positivos, porém por vezes outros objetos redondos, como cebolas e laranjas acabam por ser reconhecidos como maçãs.
+Nos testes iniciais o modelo parece sempre ter 50% de certeza que há uma maçã na imagem. Este problema pode ser originário da conversão do modelo ou de algum problema no projeto (inicialização incorreta da câmera por exemplo). Para encontrar a origem do problema foi feito um teste onde o ESP apenas transmite as imagens e roda-se o modelo *já convertido* no computador. Nestes testes averiguou-se que o ultimo modelo treinado e convertido tem uma excelente taxa de reconhecimento de maçãs, porém com uma taxa elevada de falsos positivos. Elevando-se o limiar de certeza para cerca de 95% reduz-se significativamente a taxa de falsos positivos, porém raras vezes outros objetos redondos, como cebolas e laranjas podem ser reconhecidos como maçãs.
 
-![localrun](./images/entrega4/localrun.png)
+![localrun](./images/entrega4/rodando_gif.gif)
 
-Este teste, foi então útil não apenas para constatar que a performance do modelo convertido difere da performance do modelo original, como também para aferir que as detecções obtidas no ESP *não* correspondem ao desempenho esperado do modelo, ### sendo o problema alguma adaptação do código feita para possibilitar a gravação do modelo ###.  
+Este teste, foi então útil não apenas para constatar que a performance do modelo em TFLite difere da performance do modelo original, como também para aferir que as detecções obtidas no ESP *não* correspondem ao desempenho esperado do modelo, mesmo em sua versão TFLite, os modelos em TFLite devem ser convertidos para um arquivo .cc para a gravação no ESP, sendo esta conversão o provável responsável pelo problema atual.
+
 
 ## Separação das Frutas
+
 
 
 
@@ -409,7 +418,11 @@ Este teste, foi então útil não apenas para constatar que a performance do mod
 ## Ajustes de sincronização
 
 
+## Propostas de melhoria e soluções
 
+O processamento de imagem leva cerca de 800 ms para ser executado no ESP, inviabilizando seu uso em uma linha com alto fluxo de frutas, alem disso o modelo deve passar por uma série de conversões e simplificações para rodar adequadamente no esp, o que custa tempo e deteriora sua acertividade. Uma alternativa que soluciona ambos os problemas e torna o sistema mais modular e expansível é a separação da classificação em um outro dispositivo, sendo este um microcontrolador mais potente, um FPGA, ou um SBC como um Raspberry Pi. Desta forma seria possível rodar o modelo completo, que tem acertividade bastante superior, executar a inferência de forma mais rápida, e até mesmo processar múltiplas linhas em um único dispositivo, em uma configuração de múltiplos ESPs para uma unidade de proessamento. 
+
+Além disso um reprojeto mais robusto da parte mecânica seria necessário para viabilidade de produção em escala.
 
 ## Referências
 
