@@ -367,7 +367,8 @@ Para a integração entre o processamento e acionamentos foi elaborada uma PCB, 
 O layout inicial da PCB pode ser visto abaixo.
 ![layoutp1](./images/entrega4/layout_inicial.png)
 
-
+A PCB completa pode ser vista na imagem abaixo.
+![placapronta](./images/entrega4/placapronta.png)
 
 ## Treinamento do Modelo
 
@@ -377,7 +378,28 @@ Foram criadas 4 classes para maçãs, sendo elas: nacional (abrangendo gala e fu
 
 ![classearg](./images/entrega4/classearg.png)
 
+O foram feitos mais de 10 treinamentos de modelo, com diferentes parâmetros de resolução e epochs. Os modelos foram treinados no formato YOLO, porém para implementação no microcontrolador se faz necessária sua conversão para TFLite. 
 
+Inicialmente os primeiros modelos convertidos não podiam ser gravados no ESP, sendo necessários ajustes nos parçametros de conversão, a documentação utilizada como base para o projeto e para a conversão se dava em uma toolchain antiga e vários problemas de dependências apareceram ao longo do caminho. Além da instalação manual de pacotes e dependencias em snapshots antigos dos repositórios, foi configurado um ambiente docker para a utilização destes pacotes. Entretanto, posteriormente o problema foi resolvido com a modificação do código de conversão.
+
+## Testes do modelo
+
+Após o treinamento do modelo, é feita uma validação deste, com imagens do banco de dados separadas especificamente para este propósito. Dentro do dataset base, o modelo treinado apresenta uma taxa de acerto muito próxima de 100%, reconhecendo e classificando corretamente as maçãs. 
+
+![vdata1](./images/entrega4/vdata1.png)
+
+Em imagens da internet o desempenho apresenta variações, desempenhando muito bem em imagens com poucas maçãs e fundo uniforme, porém se confundindo um pouco quando há muitas maçãs sobrepostas, maçãs parcialmente maduras às vezes são classificadas como verdes, e há uma certa margem de erro entre maçãs nacionais e a classe pink (variedade Pink Lady).
+
+![inetclass1](./images/entrega4/inetclass1.png)
+
+## Implementação do modelo no ESP
+
+O modelo convertido foi implementado no ESP, utilizando-se do projeto dos parafusos como base, foi necessária a remoção de uma instrução do modelo para que este pudesse ser gravado no ESP.
+Nos testes iniciais o modelo parece sempre ter 50% de certeza que há uma maçã na imagem. Este problema pode ser originário da conversão do modelo ou de algum problema no projeto (inicialização incorreta da câmera por exemplo). Para encontrar a origem do problema foi feito um teste onde o ESP apenas transmite as imagens e roda-se o modelo *já convertido* no computador. Nestes testes averiguou-se que o ultimo modelo treinado e convertido tem uma excelente taxa de reconhecimento de maçãs, porém com uma taxa elevada de falsos positivos. Elevando-se o limiar de certeza para cerca de 95% reduz-se significativamente a taxa de falsos positivos, porém por vezes outros objetos redondos, como cebolas e laranjas acabam por ser reconhecidos como maçãs.
+
+![localrun](./images/entrega4/localrun.png)
+
+Este teste, foi então útil não apenas para constatar que a performance do modelo convertido difere da performance do modelo original, como também para aferir que as detecções obtidas no ESP *não* correspondem ao desempenho esperado do modelo, ### sendo o problema alguma adaptação do código feita para possibilitar a gravação do modelo ###.  
 
 ## Separação das Frutas
 
