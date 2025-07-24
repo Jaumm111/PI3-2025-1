@@ -382,8 +382,19 @@ O foram feitos mais de 10 treinamentos de modelo, com diferentes parâmetros de 
 
 O treinamento dos modelos assim como alguns testes de validação e conversão foram inicialmente feitos neste  [Notebook do Colab](https://colab.research.google.com/drive/1OkuWUN6HiTaSCjiW95Y2XHSDLfaRnJr2?usp=sharing) e posteriormente a conversão foi feita em ambiente local por questões de compatibilidade.
 
+Os treinamentos foram realizados com as imagens em duas resoluções, 96x96 e 640x640. O treinamento com imagens de maior resolução converge muito mais rápido para altas taxas de precisão e recall. Porém o modelo treinado com imagens 96x96 também apresentou boas métricas no fim do treinamento e acabou se desempenhando melhor com imagens do ESP e gera um arquivo menor para ser gravado no ESP.
+
+Abaixo está uma imagem com as métricas do modelo treinado com imagens de *640x640*
+![res640](./images/entrega4/resultado640.jpg)
+
+E abaixo seguem os resultados do modelo trinado com imagens de *96x96*
+![res96](./images/entrega4/resultado96)
+
 Os modelos convertidos no ambiente do colab não podiam ser gravados no ESP, sendo necessários ajustes nos parâmetros de treinamento e conversão, a documentação utilizada como base para o projeto e para a conversão se dava em uma toolchain antiga e vários problemas de dependências apareceram ao longo do caminho. Além da instalação manual de pacotes e dependencias em snapshots antigos dos repositórios, foi configurado um ambiente docker para a utilização destes pacotes. Entretanto, posteriormente o problema foi resolvido configurando-se uma toolchain mais antiga em ambiente local em uma das máquinas da equipe.
 
+Além das conversões foi também tentada uma redução em diversos parâmetros de treinamento, porém isso resultou em ua performance muito degradada que não pôde ser utilizada. Abaixo pode-se ver as métricas deste treinamento.
+
+![resreduzido](./images/entrega4/resultado_mreduzido.jpg)
 
 
 ## Testes do modelo
@@ -397,7 +408,10 @@ Abaixo segue a classificação de algumas imagens da internet, mais imagens pode
 ![vdata1](./images/entrega4/class1.jpg)
 ![inetclass1](./images/entrega4/class2.jpg)
 ![inetclass2](./images/entrega4/class3.jpg)
-![inetclass1](./images/entrega4/class9.jpg)
+![inetclass3](./images/entrega4/class9.jpg)
+
+![inetclass4](./images/entrega4/vfrutas1.jpg)
+![inetclass5](./images/entrega4/vfrutas2.jpg)
 
 ## Implementação do modelo no ESP
 
@@ -419,6 +433,8 @@ Este teste, foi então útil não apenas para constatar que a performance do mod
 
 
 ## Propostas de melhoria e soluções
+
+Uma melhoria seria a adição de imagens de outras frutas e de fotos mais diversas ao conjunto de dados de terinamento, isto poderia mitigar a taxa de falsos positivos e melhorar a detecção em imgens com fundos mais diversos.
 
 O processamento de imagem leva cerca de 800 ms para ser executado no ESP, inviabilizando seu uso em uma linha com alto fluxo de frutas, alem disso o modelo deve passar por uma série de conversões e simplificações para rodar adequadamente no esp, o que custa tempo e deteriora sua acertividade. Uma alternativa que soluciona ambos os problemas e torna o sistema mais modular e expansível é a separação da classificação em um outro dispositivo, sendo este um microcontrolador mais potente, um FPGA, ou um SBC como um Raspberry Pi. Desta forma seria possível rodar o modelo completo, que tem acertividade bastante superior, executar a inferência de forma mais rápida, e até mesmo processar múltiplas linhas em um único dispositivo, em uma configuração de múltiplos ESPs para uma unidade de proessamento. 
 
