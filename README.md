@@ -368,7 +368,7 @@ O layout inicial da PCB pode ser visto abaixo.
 ![layoutp1](./images/entrega4/layout_inicial.png)
 
 A PCB completa pode ser vista na imagem abaixo.
-![placapronta](./images/entrega4/placapronta.png)
+![placapronta](./images/entrega4/placapronta.jpg)
 
 ## Treinamento do Modelo
 
