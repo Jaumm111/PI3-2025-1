@@ -423,14 +423,13 @@ Nos testes iniciais o modelo parece sempre ter 50% de certeza que há uma maçã
 Este teste, foi então útil não apenas para constatar que a performance do modelo em TFLite difere da performance do modelo original, como também para aferir que as detecções obtidas no ESP *não* correspondem ao desempenho esperado do modelo, mesmo em sua versão TFLite, os modelos em TFLite devem ser convertidos para um arquivo .cc para a gravação no ESP, sendo esta conversão o provável responsável pelo problema atual.
 
 
-## Separação das Frutas
-
-
-
 
 
 ## Ajustes de sincronização
 
+Um teste final foi feito para garantir que a porta desejada estivesse aberta no momento em que a fruta chega até sua frete, no vídeo abaixo inicialmente a fruta é designada para a primeira porta, em seguida para o fim da esteira (descarte), e por fim para a segunda porta. Um gif do teste pode ser visto abaixo.
+
+![gifsinc](./images/entrega4/sinc_gif.gif)
 
 ## Propostas de melhoria e soluções
 
