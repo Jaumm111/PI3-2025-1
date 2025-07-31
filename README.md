@@ -382,7 +382,7 @@ O foram feitos mais de 10 treinamentos de modelo, com diferentes parâmetros de 
 
 O treinamento dos modelos assim como alguns testes de validação e conversão foram inicialmente feitos neste  [Notebook do Colab](https://colab.research.google.com/drive/1OkuWUN6HiTaSCjiW95Y2XHSDLfaRnJr2?usp=sharing) e posteriormente a conversão foi feita em ambiente local por questões de compatibilidade.
 
-Os treinamentos foram realizados com as imagens em duas resoluções, 96x96 e 640x640. O treinamento com imagens de maior resolução converge muito mais rápido para altas taxas de precisão e recall. Porém o modelo treinado com imagens 96x96 também apresentou boas métricas no fim do treinamento e acabou se desempenhando melhor com imagens do ESP e apresenta menor tempo de treinamento.
+Os treinamentos foram realizados com as imagens em duas resoluções, 96x96 e 640x640. O treinamento com imagens de maior resolução converge muito mais rápido para altas taxas de precisão e recall. Porém o modelo treinado com imagens 96x96 também apresentou boas métricas no fim do treinamento e acabou se desempenhando melhor com imagens do ESP e apresenta menor tempo de treinamento. Precisão mede a taxa de falsos positivos, sendo a taxa de falos positivos = 1 - precisão. E recall mede, dentre todas os elementos relevantes (detecções e classificações que devem ser feitas), quantos realmente foram feitos. Nota-se que ambas estas medidas antingem um platô após um certo número de epochs, com este número dependendo de variáveis de treinamento, sendo este platô próximo de 1. Julgou-se as métricas do modelo treinado com imagens em resolução 640x640 mostrado abaixo como satisfatória, porém diversos treinamentos com outras resoluções e parâmetros foram realizadas e podem ser vistas no [Google Drive](https://drive.google.com/drive/folders/1eUns3YBccAsm3urnZM-7gGBlzAcRlj5u?usp=sharing).
 
 Abaixo está uma imagem com as métricas do modelo treinado com imagens de *640x640*
 ![res640](./images/entrega4/resultado640.jpg)
@@ -427,11 +427,13 @@ Este teste, foi então útil não apenas para constatar que a performance do mod
 
 
 
-## Ajustes de sincronização
+## Ajustes de sincronização e Eletromecânica.
 
 Um teste final foi feito para garantir que a porta desejada estivesse aberta no momento em que a fruta chega até sua frete, no vídeo abaixo inicialmente a fruta é designada para a primeira porta, em seguida para o fim da esteira (descarte), e por fim para a segunda porta. Um gif do teste pode ser visto abaixo.
 
 ![gifsinc](./images/entrega4/sinc_gif.gif)
+
+O desenvolvimento da parte eletromecânica vem sendo bastante detalhado desde a primeira etapa, sendo assim nesta última etapa bastou confeccionar a PCB detalhada acima e posicioná-la no topo da estrutura conforme visto no GIF acima. Rechonece-se que a estrutura mecânica é o ponto menos desenvolvido do projeto e que caso evolua para um produto deverá ser refeita de forma mais robusta e menos artesanal.
 
 ## Propostas de melhoria e soluções
 
